@@ -60,8 +60,57 @@ public class getFaceTrack {
 		}
 		return n;
 	}
-}
 
-//
-//
-//
+	//
+	//
+	// TODO include motor C balance
+	public int RunMotor() {
+		int n = run(false);
+		if (n < 9) {
+			Motor.A.setSpeed(25);
+			Motor.B.setSpeed(25);
+		}
+		if (n > 9 && n < 19) {
+			Motor.A.setSpeed(50);
+			Motor.B.setSpeed(50);
+			n = n - 10;
+		}
+		if (n > 19 && n < 29) {
+			Motor.A.setSpeed(100);
+			Motor.B.setSpeed(100);
+			n = n - 20;
+		}
+		if (n > 29 && n < 39) {
+			Motor.A.setSpeed(200);
+			Motor.B.setSpeed(200);
+			n = n - 30;
+		}
+
+		if (n == 1 || n == 4) {
+			Motor.A.forward();
+		}
+		if (n == 2 || n == 3) {
+			Motor.A.backward();
+		}
+		if (n == 1 || n == 2) {
+			Motor.B.backward();
+		}
+		if (n == 3 || n == 4) {
+			Motor.B.forward();
+		}
+		if (n == 5) {
+			Motor.A.forward();
+			Motor.B.stop();
+		}
+		if (n == 6) {
+			Motor.A.backward();
+			Motor.B.stop();
+		}
+
+		if (n == 0 || n == 7) {
+			Motor.A.stop();
+			Motor.B.stop();
+		}
+		return n;
+	}
+}

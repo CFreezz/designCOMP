@@ -5,9 +5,10 @@ public class Driver {
 	void main(String[] args){
 		Motor.A.setSpeed(25);
 		getFaceTrack tracker = new getFaceTrack(); //only instantiate once, only use 'tracker'
-		int position = tracker.run(false);
-		if(position == 0){
-			//etc
+		while(!init.initialize(tracker)){
+			//continuously tries to initialize until initialize returns true
 		}
+		
+		
 	}
 }
